@@ -4,7 +4,6 @@ void AVLtree<Position>::makeBalanced(Node<Position>* n) {
     n->left()->setHeight();
     n->right()->setHeight();
     Node<Position>* newParent=n;
-    //std::cout<<"ready to insert"<<std::endl;
     if(!isBalanced(n)) {
         Node<Position>* z=n;
         Node<Position>* y=(n->left()->height()>n->right()->height() ?
@@ -18,37 +17,28 @@ void AVLtree<Position>::makeBalanced(Node<Position>* n) {
 template <typename Position>
 Node<Position>* AVLtree<Position>::trinodeRestructuring(Node<Position>* x) {
     Node<Position>* a, *b, *c;
-    if(**x<**(x->parent())&&**x<**(x->parent()->parent())) {
-        a=x;
-        if(**(x->parent())<**(x->parent()->parent())) {
-            b=x->parent();
-            c=x->parent()->parent();
+    Node<Position> *y=x->parent();
+    Node<Position> *z=y->parent();
+    if(z->left()==y) {
+        c=z;
+        if(y->left()==x) {
+            a=x;
+            b=y;
         }
         else {
-            c=x->parent();
-            b=x->parent()->parent();
-        }
-    }
-    else if(**x>**(x->parent())&&**x>**(x->parent()->parent())) {
-        c=x;
-        if(**(x->parent())<**(x->parent()->parent())) {
-            a=x->parent();
-            b=x->parent()->parent();
-        }
-        else {
-            b=x->parent();
-            a=x->parent()->parent();
+            b=x;
+            a=y;
         }
     }
     else {
-        b=x;
-        if(**(x->parent())<**(x->parent()->parent())) {
-            a=x->parent();
-            c=x->parent()->parent();
+        a=z;
+        if(y->left()==x) {
+            b=x;
+            c=y;
         }
         else {
-            c=x->parent();
-            a=x->parent()->parent();
+            c=x;
+            b=y;
         }
     }
     Node<Position>* h1, *h2, *T1, *T2, *T3, *T4;
