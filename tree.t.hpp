@@ -3,8 +3,8 @@
 template <typename Position>
 void BinaryTree<Position>::deleteRecursively(Node<Position>* n) {
     if(!n->isExternal()) {
-        deleteRecursively(n->_left);
-        deleteRecursively(n->_right);
+        deleteRecursively(n->left());
+        deleteRecursively(n->right());
     }
     delete n;
 }
@@ -17,8 +17,8 @@ List<Position> BinaryTree<Position>::entries() {
 template <typename Position>
 void BinaryTree<Position>::appendToListRecursively(Node<Position>* n, List<Position>& l) {
     l.append(n);
-    if(!n->_left->isExternal()) appendToListRecursively(n->_left, l);
-    if(!n->_right->isExternal()) appendToListRecursively(n->_right, l);
+    if(!n->left()->isExternal()) appendToListRecursively(n->left(), l);
+    if(!n->right()->isExternal()) appendToListRecursively(n->right(), l);
 }
 template <typename Position>
 void BinaryTree<Position>::expandExternal(Node<Position>* n) {
