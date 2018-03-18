@@ -23,10 +23,10 @@ void List<Position>::append(Node<Position>* v) {
     }
 }
 template <typename Position>
-Position List<Position>::pop() {
+Node<Position>* List<Position>::pop() {
     if(!empty()) {
         Element<Position>* oldHead=_head;
-        Position toReturn(**oldHead);
+        Node<Position>* toReturn=**oldHead;
         _head=_head->next();
         delete oldHead;
         return toReturn;

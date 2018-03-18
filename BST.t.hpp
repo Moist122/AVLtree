@@ -23,25 +23,25 @@ Node<Position>* SearchTree<Position>::insert(Position v) {
         return toInsert;
 }
 template <typename Position>
-Node<Position>& SearchTree<Position>::find(Position value, Node<Position>* n) {
+Node<Position>* SearchTree<Position>::find(Position value, Node<Position>* n) {
     Node<Position>* current=n;
     while((!current->isExternal())&&**current!=value) {
         if(**current<value) current=current->right();
         else current=current->left();
     }
-    return *current;
+    return current;
 }
 template <typename Position>
-List<Node<Position> > SearchTree<Position>::findAll(Position value) {
-    List<Node<Position> > l;
-    List<Node<Position> > toCheck;
-    toCheck.append(this->root());
+List<Position> SearchTree<Position>::findAll(Position value) {
+    List<Position> l;
+    List<Position> toCheck;
+    toCheck.append(&(this->root()));
     while(!toCheck.empty()) {
-        Position toAdd=find(value,toCheck.pop());
-        if(!toAdd.isExternal()){
+        Node<Position>* toAdd=find(value,toCheck.pop());
+        if(!toAdd->isExternal()){
             l.append(toAdd);
-            toCheck.append(toAdd.left());
-            toCheck.append(toAdd.right());
+            toCheck.append(toAdd->left());
+            toCheck.append(toAdd->right());
         }
     }
     return l;

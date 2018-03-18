@@ -4,6 +4,7 @@ void AVLtree<Position>::makeBalanced(Node<Position>* n) {
     n->left()->setHeight();
     n->right()->setHeight();
     Node<Position>* newParent=n;
+    //std::cout<<"ready to insert"<<std::endl;
     if(!isBalanced(n)) {
         Node<Position>* z=n;
         Node<Position>* y=(n->left()->height()>n->right()->height() ?

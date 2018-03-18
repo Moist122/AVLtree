@@ -5,7 +5,7 @@ class Element{
 public:
     Element(Node<Position>* v)
         :_value(v), _next(nullptr) {}
-    Position& operator*() {return **_value;}
+    Node<Position>* operator*() {return _value;}
     Element<Position>* next() {return _next;}
     void addNext(Element<Position>* n) {_next=n;}
 private:
@@ -21,7 +21,7 @@ public:
     ~List();
     Element<Position>* head() {return _head;}
     void append(Node<Position>* v);
-    Position pop();
+    Node<Position>* pop();
     bool empty() {return _head==nullptr;}
 private:
     Element<Position>* _head;
