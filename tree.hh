@@ -19,7 +19,7 @@ public:
         //add root node to empty tree
     void setRoot(Node<Position>* n) {_root=n;}
         //set value of root node to n
-    Node<Position>& root() {return *_root;}
+    Node<Position>* root() {return _root;}
         //get root
     void deleteRecursively(Node<Position>* n);
         //delete n and every node below it

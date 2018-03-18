@@ -8,7 +8,7 @@ void preorderTraversal(SearchTree<Position>* T, Node<Position>* p) {
 }
 template<typename Position>
 void preorderTraversal(SearchTree<Position>* T) {
-    preorderTraversal(T, &(T->root()));
+    preorderTraversal(T, T->root());
 }
 template<typename Position>
 void postorderTraversal(SearchTree<Position>* T, Node<Position>* p) {
@@ -18,7 +18,7 @@ void postorderTraversal(SearchTree<Position>* T, Node<Position>* p) {
 }
 template<typename Position>
 void postorderTraversal(SearchTree<Position>* T) {
-    postorderTraversal(T, &(T->root()));
+    postorderTraversal(T, T->root());
 }
 template<typename Position>
 void inorderTraversal(SearchTree<Position>* T, Node<Position>* p) {
@@ -28,7 +28,7 @@ void inorderTraversal(SearchTree<Position>* T, Node<Position>* p) {
 }
 template<typename Position>
 void inorderTraversal(SearchTree<Position>* T) {
-    inorderTraversal(T, &(T->root()));
+    inorderTraversal(T, T->root());
 }
 template<typename Position>
 void eulerianTour(SearchTree<Position>* T, Node<Position>* p) {
@@ -40,37 +40,5 @@ void eulerianTour(SearchTree<Position>* T, Node<Position>* p) {
 }
 template<typename Position>
 void eulerianTour(SearchTree<Position>* T) {
-    eulerianTour(T, &(T->root()));
+    eulerianTour(T, T->root());
 }
-
-/*
-int depth(Position* p) {
-    int d=0;
-    while(p->getParent()!=nullptr) {
-        p=p->getParent();
-        d++;
-    }
-    return d;
-}
-
-void printArray(int array[][3], int counter){
-    //sortArray(array,counter);
-
-}
-
-void printTree(SearchTree* T, Position* p, int positions[][3], int* counter) {
-    if(p->getLeft()!=nullptr) inorderTraversal(T, p->getLeft());
-    positions[*counter,depth(p),**p];
-    (*counter)++;
-    if(p->getRight()!=nullptr) inorderTraversal(T, p->getRight());
-    if(*counter==T->getSize()-1){
-        printArray(positions, *counter);
-        delete counter;
-    }
-}
-
-void printTree(SearchTree* T) {
-    int positions [T->getSize()][3]; //[x,y,value]
-    int *counter = new int(0);
-    printTree(T, T->getRoot(), positions, counter);
-}*/

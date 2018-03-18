@@ -35,7 +35,7 @@ template <typename Position>
 List<Position> SearchTree<Position>::findAll(Position value) {
     List<Position> l;
     List<Position> toCheck;
-    toCheck.append(&(this->root()));
+    toCheck.append(this->_root);
     while(!toCheck.empty()) {
         Node<Position>* toAdd=find(value,toCheck.pop());
         if(!toAdd->isExternal()){
