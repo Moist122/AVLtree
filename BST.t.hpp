@@ -1,14 +1,14 @@
 #include "BST.hh"
 template <typename Position>
 Node<Position>* SearchTree<Position>::remove(Node<Position>* n) {
-    if(n->getLeft()->isExernal()) return removeAboveExternal(n->getLeft());
-    else if(n->getRight()->isExernal()) return removeAboveExternal(n->getRight());
+    if(n->left()->isExternal()) return this->removeAboveExternal(n->left());
+    else if(n->right()->isExternal()) return this->removeAboveExternal(n->right());
     else {
-        Position* substitute=n->right();
-        while(!substitute->getLeft()->isExernal())
-            substitute=substitute->getLeft();
-        *n=*substitute;
-        return removeAboveExternal(substitute->getLeft());
+        Node<Position>* substitute=n->right();
+        while(!substitute->left()->isExternal())
+            substitute=substitute->left();
+        **n=**substitute;
+        return this->removeAboveExternal(substitute->left());
     }
 }
 template <typename Position>

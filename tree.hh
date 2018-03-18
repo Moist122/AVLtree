@@ -6,7 +6,7 @@ class BinaryTree {
 public:
     BinaryTree()
         :_root(nullptr), _size(0) {}
-    ~BinaryTree() {/*deleteRecursively(_root);*/}
+    ~BinaryTree() {deleteRecursively(_root);}
 
     bool isEmpty() const {return _size==0;}
     int size() const {return _size;}
