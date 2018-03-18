@@ -30,11 +30,19 @@ template<typename Position>
 void inorderTraversal(SearchTree<Position>* T) {
     inorderTraversal(T, &(T->root()));
 }
-
-/*void eulerianTour(SearchTree *T) {
-
+template<typename Position>
+void eulerianTour(SearchTree<Position>* T, Node<Position>* p) {
+    std::cout<<"Left:"<<**p<<std::endl;
+    if(!p->left()->isExternal()) eulerianTour(T, p->left());
+    std::cout<<"Down:"<<**p<<std::endl;
+    if(!p->right()->isExternal()) eulerianTour(T, p->right());
+    std::cout<<"Right:"<<**p<<std::endl;
 }
-*/
+template<typename Position>
+void eulerianTour(SearchTree<Position>* T) {
+    eulerianTour(T, &(T->root()));
+}
+
 /*
 int depth(Position* p) {
     int d=0;
