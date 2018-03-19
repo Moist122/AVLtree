@@ -12,16 +12,20 @@ using std::cin;
 using std::endl;
 
 void menu() {
-    cout<<endl<<"m - menu"<<endl
-    <<"a - add nodes"<<endl
+    cout<<endl<<"a - add a node"<<endl
+    <<"n - add multiple nodes"<<endl
+    <<"d - add 10 random nodes"<<endl
     <<"r - remove node"<<endl
-    <<"t - test(20 random nodes)"<<endl
-    <<"s - Eulerian tour"<<endl
+    <<"p - preorder traversal"<<endl
+    <<"i - inorder traversal"<<endl
+    <<"o - postorder traversal"<<endl
+    <<"t - Eulerian tour"<<endl
+    <<"s - print entries"<<endl
     <<"e - exit"<<endl;
 }
 template <typename Position>
 void test(AVLtree<Position>& t) {
-    for(int i=0;i<20;++i) t.insert(rand()%2001-1000);
+    for(int i=0;i<10;++i) t.insert(rand()%2001-1000);
 }
 template <typename Position>
 void chooseNodeToRemove(AVLtree<Position>& t) {
@@ -84,17 +88,46 @@ int main() {
                 cin>>toAdd;
                 t.insert(toAdd);
                 break;
+            case 'n':
+                int n;
+                cout<<endl<<"How many?"<<endl;
+                cin>>n;
+                for(int i=0;i<n;++i) {
+                    int toAdd;
+                    cout<<endl<<"Integer to add:"<<endl;
+                    cin>>toAdd;
+                    t.insert(toAdd);
+                }
+                break;
             case 'r':
                 chooseNodeToRemove(t);
                 break;
-            case 't':
+            case 'd':
                 test(t);
                 break;
-            case 's':
+            case 't':
                 eulerianTour(&t);
+                break;
+            case 'p':
+                preorderTraversal(&t);
+                break;
+            case 'i':
+                inorderTraversal(&t);
+                break;
+            case 'o':
+                postorderTraversal(&t);
+                break;
+            case 's':
+                List<int> l=t.entries();
+                Element<int>* current=l.head();
+                while(current!=nullptr){
+                    cout<<****current<<endl;
+                    current=current->next();
+                }
                 break;
         }
 
     }
     return 0;
 }
+//traversals+const
