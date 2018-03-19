@@ -31,17 +31,28 @@ void BinaryTree<Position>::expandExternal(Node<Position>* n) {
 template <typename Position>
 Node<Position>* BinaryTree<Position>::removeAboveExternal(Node<Position>* n){
     if(n->isExternal()){
+        if(_size==1) {
+            delete n;
+            _size-=1;
+            return nullptr;
+        }
         Node<Position>* toDelete=n->parent();
         Node<Position>* toSave;
         if(toDelete->left()==n) toSave=toDelete->right();
         else toSave=toDelete->left();
         Node<Position>* grandparent=toDelete->parent();
         toSave->setParent(grandparent);
-        if(grandparent->left()==toDelete) grandparent->setLeft(toSave);
-        else grandparent->setRight(toSave);
+        if(grandparent!=nullptr) {
+            if(grandparent->left()==toDelete) grandparent->setLeft(toSave);
+            else grandparent->setRight(toSave);
+        }
         delete n;
         delete toDelete;
         _size-=2;
+        if(_size<=3) {
+            setRoot(toSave);
+            return toSave;
+        }
         return grandparent;
     }
 }

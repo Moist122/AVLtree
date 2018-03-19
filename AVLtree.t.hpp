@@ -1,18 +1,20 @@
 #include "AVLtree.hh"
 template<typename Position>
 void AVLtree<Position>::makeBalanced(Node<Position>* n) {
-    n->left()->setHeight();
-    n->right()->setHeight();
-    Node<Position>* newParent=n;
-    if(!isBalanced(n)) {
-        Node<Position>* z=n;
-        Node<Position>* y=(n->left()->height()>n->right()->height() ?
-            n->left():n->right());
-        Node<Position>* x=(y->left()->height()>y->right()->height() ?
-            y->left():y->right());
-        newParent=trinodeRestructuring(x);
-        }
-    if(!newParent->isRoot()) makeBalanced(newParent->parent());
+    if(n!=nullptr&&this->_size>2) {
+        n->left()->setHeight();
+        n->right()->setHeight();
+        Node<Position>* newParent=n;
+        if(!isBalanced(n)) {
+            Node<Position>* z=n;
+            Node<Position>* y=(n->left()->height()>n->right()->height() ?
+                n->left():n->right());
+            Node<Position>* x=(y->left()->height()>y->right()->height() ?
+                y->left():y->right());
+            newParent=trinodeRestructuring(x);
+            }
+        if(!newParent->isRoot()) makeBalanced(newParent->parent());
+    }
 }
 template <typename Position>
 Node<Position>* AVLtree<Position>::trinodeRestructuring(Node<Position>* x) {

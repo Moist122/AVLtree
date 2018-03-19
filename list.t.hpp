@@ -14,12 +14,10 @@ void List<Position>::append(Node<Position>* v) {
     if(empty()){
         _head=new Element<Position>(v);
         _tail=_head;
-        //std::cout<<***_head<<std::endl;
         }
     else {
         _tail->addNext(new Element<Position>(v));
         _tail=_tail->next();
-        //std::cout<<***_tail<<std::endl;
     }
 }
 template <typename Position>
