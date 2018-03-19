@@ -1,7 +1,21 @@
 #include "tree.hh"
 
 template <typename Position>
+void BinaryTree<Position>::addRoot(){
+    if(_root!=nullptr)
+        throw TreeAlreadyRootedException("You can't add second root to this tree");
+    _root=new Node<Position>;
+    _size=1;
+}
+template <typename Position>
+Node<Position>* BinaryTree<Position>::root() {
+    if(_root==nullptr)
+        throw UnrootedTreeException("That tree has no root");
+    return _root;
+}
+template <typename Position>
 void BinaryTree<Position>::deleteRecursively(Node<Position>* n) {
+    if(_root==nullptr) return;
     if(!n->isExternal()) {
         deleteRecursively(n->left());
         deleteRecursively(n->right());

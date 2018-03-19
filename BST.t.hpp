@@ -1,6 +1,8 @@
 #include "BST.hh"
 template <typename Position>
 Node<Position>* SearchTree<Position>::remove(Node<Position>* n) {
+    if(this->_root==nullptr)
+        throw UnrootedTreeException("That tree has no root");
     if(n->left()->isExternal()) return this->removeAboveExternal(n->left());
     else if(n->right()->isExternal()) return this->removeAboveExternal(n->right());
     else {
@@ -13,14 +15,16 @@ Node<Position>* SearchTree<Position>::remove(Node<Position>* n) {
 }
 template <typename Position>
 Node<Position>* SearchTree<Position>::insert(Position v) {
-        Node<Position>* toInsert=this->_root;
-        while(!toInsert->isExternal()){
-            if(**toInsert<v) toInsert=toInsert->right();
-            else toInsert=toInsert->left();
-        }
-        toInsert->addValue(v);
-        this->expandExternal(toInsert);
-        return toInsert;
+    if(this->_root==nullptr)
+        throw UnrootedTreeException("That tree has no root");
+    Node<Position>* toInsert=this->_root;
+    while(!toInsert->isExternal()){
+        if(**toInsert<v) toInsert=toInsert->right();
+        else toInsert=toInsert->left();
+    }
+    toInsert->addValue(v);
+    this->expandExternal(toInsert);
+    return toInsert;
 }
 template <typename Position>
 Node<Position>* SearchTree<Position>::find(Position value, Node<Position>* n) {

@@ -1,4 +1,10 @@
 #include "node.hh"
+
+template <typename Position>
+Position& Node<Position>::operator*() {
+    if(_value==nullptr) throw EmptyNodeException("This node has no value stored.");
+    return *_value;
+}
 template <typename Position>
 void Node<Position>::setHeight() {
     if(isExternal()) _height = 0;

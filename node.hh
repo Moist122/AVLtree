@@ -1,4 +1,5 @@
 #pragma once
+#include "exception.hh"
 
 template <typename Position>
 class Node {
@@ -8,7 +9,7 @@ public:
         _height(0) {}
     ~Node() {if(_value!=nullptr) delete _value;}
 
-    Position& operator*() {return *_value;}
+    Position& operator*();
         //position stored in node
     void addValue(Position pos) {_value=new Position(pos);}
         //adds position to node

@@ -96,29 +96,5 @@ int main() {
         }
 
     }
-    /*
-    for(int i=0;i<20;++i) t.insert(rand()%2001-1000);
-    t.insert(1);
-    t.insert(15);
-    t.insert(1);
-    eulerianTour(&t);
-    cout<<endl<<endl;
-    for(int i=0;i<3;++i) t.remove(t.root()->right());
-    t.remove(t.root());
-    eulerianTour(&t);
-    cout<<endl<<endl;
-    List<int> l=t.entries();
-    Element<int>* current=l.head();
-    while(current!=nullptr) {
-        cout<<****current<<endl;
-        current=current->next();
-    }
-    cout<<endl<<endl;
-    List<int> l2=t.findAll(1);
-    current=l2.head();
-    while(current!=nullptr) {
-        cout<<****current<<endl;
-        current=current->next();
-    }
-    */
+    return 0;
 }

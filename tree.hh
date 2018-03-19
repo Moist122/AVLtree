@@ -1,6 +1,7 @@
 #pragma once
 #include "node.hh"
 #include "list.hh"
+#include  "exception.hh"
 template <typename Position>
 //Any binary tree
 class BinaryTree {
@@ -15,11 +16,11 @@ public:
         //number of nodes including external
     List<Position> entries();
         //preorder traversal adding Nodes to list
-    void addRoot() {_root=new Node<Position>; _size=1;}
+    void addRoot();
         //add root node to empty tree
     void setRoot(Node<Position>* n) {_root=n;}
         //set value of root node to n
-    Node<Position>* root() {return _root;}
+    Node<Position>* root();
         //get root
     void deleteRecursively(Node<Position>* n);
         //delete n and every node below it
