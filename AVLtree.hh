@@ -14,8 +14,7 @@ public:
         {return makeBalanced(SearchTree<Position>::remove(pos), 0);}
         //remove pos, then rebalance tree
         //returns number of rotations
-    bool isBalanced(Node<Position>* n) const
-        {return abs((n->left()->height())-(n->right()->height()))<2;}
+    bool isBalanced(Node<Position>* n) const;
         //check if node n is balanced
 protected:
     int makeBalanced(Node<Position>* n, int num);

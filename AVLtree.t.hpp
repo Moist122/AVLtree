@@ -1,6 +1,11 @@
 #include "AVLtree.hh"
 
 template<typename Position>
+bool AVLtree<Position>::isBalanced(Node<Position>* n) const {
+    if(n->isExternal()) return true;
+    return abs((n->left()->height())-(n->right()->height()))<2;
+}
+template<typename Position>
 int AVLtree<Position>::makeBalanced(Node<Position>* n, int num) {
     if(n!=nullptr&&this->_size>2) {
         n->left()->setHeight();

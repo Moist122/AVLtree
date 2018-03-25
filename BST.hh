@@ -13,6 +13,7 @@ public:
         //return parent of removed node
     Node<Position>* find(Position value, Node<Position>* n);
         //find 1 node with position value
+        //returns external node if not found
     List<Position> findAll(Position value);
         //find all nodes with positions value
 };
