@@ -1,6 +1,7 @@
 #include "AVLtree.hh"
+
 template<typename Position>
-void AVLtree<Position>::makeBalanced(Node<Position>* n) {
+int AVLtree<Position>::makeBalanced(Node<Position>* n, int num) {
     if(n!=nullptr&&this->_size>2) {
         n->left()->setHeight();
         n->right()->setHeight();
@@ -12,8 +13,10 @@ void AVLtree<Position>::makeBalanced(Node<Position>* n) {
             Node<Position>* x=(y->left()->height()>y->right()->height() ?
                 y->left():y->right());
             newParent=trinodeRestructuring(x);
+            num++;
             }
-        if(!newParent->isRoot()) makeBalanced(newParent->parent());
+        if(!newParent->isRoot()) return makeBalanced(newParent->parent(),num);
+        return num;
     }
 }
 template <typename Position>

@@ -27,8 +27,12 @@ public:
 
 protected:
     void expandExternal(Node<Position>* n);
+        //add empty nodes as children of external node
     Node<Position>* removeAboveExternal(Node<Position>* n);
+        //remove external node and its parent
+        //returns parent of removed internal node
     void appendToListRecursively(Node<Position>* n, List<Position>& l);
+        //append node and its children to the list
 
 protected:
     Node<Position>* _root;
